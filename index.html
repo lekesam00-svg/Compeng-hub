@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101d35">
+<title>CompEng Hub | Student Portal</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #17233b;
+}
+
+header {
+  background: #101d35;
+  color: white;
+  padding: 24px 18px;
+}
+
+header h1 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 15px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+nav a {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-size: 14px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 950px;
+  margin: auto;
+  padding: 20px 15px;
+}
+
+.welcome {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 15px;
+  margin-bottom: 22px;
+  border: 1px solid #e2e8f0;
+}
+
+.welcome h2 {
+  margin-bottom: 10px;
+}
+
+.welcome p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.section-title {
+  margin: 25px 0 15px;
+  font-size: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: white;
+  padding: 17px;
+  border-radius: 13px;
+  border: 1px solid #e2e8f0;
+}
+
+.card .icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-block;
+  background: #1d4ed8;
+  color: white;
+  padding: 11px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 13px;
+}
+
+.announcement {
+  background: white;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  padding: 17px;
+  margin-bottom: 12px;
+}
+
+.announcement p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px;
+  background: #101d35;
+  color: #cbd5e1;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 35px;
+}
+
+@media (min-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>💻 CompEng Hub</h1>
+  <p>Federal University of Technology and Environmental Science, Iyin-Ekiti</p>
+  <p>Computer Engineering Department Student Portal</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#news">Department News</a>
+  <a href="#services">Student Services</a>
+  <a href="#resources">Study Materials</a>
+</nav>
+
+<main class="container" id="home">
+
+  <section class="welcome">
+    <span class="badge">STUDENT COMMUNITY</span>
+    <h2>Welcome to CompEng Hub 👋</h2>
+    <p>
+      Your central platform for departmental announcements,
+      class information, attendance, payments, academic resources,
+      and student activities.
+    </p>
+  </section>
+
+  <section id="news">
+    <h2 class="section-title">📢 Department News</h2>
+
+    <article class="announcement">
+      <span class="badge">WELCOME</span>
+      <h3>Welcome to CompEng Hub</h3>
+      <p>
+        Stay connected with your Computer Engineering Department.
+        Important announcements will appear here when published
+        by authorized department administrators.
+      </p>
+    </article>
+
+    <article class="announcement">
+      <span class="badge">STUDENT INFORMATION</span>
+      <h3>Check Your Academic Updates</h3>
+      <p>
+        Visit the portal regularly for class schedules,
+        examination information, and departmental notices.
+      </p>
+    </article>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">🎓 Student Services</h2>
+
+    <div class="grid">
+
+      <article class="card">
+        <div class="icon">✅</div>
+        <h3>Class Attendance</h3>
+        <p>Access lecture and practical attendance information.</p>
+        <a class="button" href="#attendance">Open Section</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">💰</div>
+        <h3>Class Payments</h3>
+        <p>View class dues and payment submission instructions.</p>
+        <a class="button" href="#payments">Open Section</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">🗓️</div>
+        <h3>Class Timetable</h3>
+        <p>Keep track of lecture times, venues, and deadlines.</p>
+        <a class="button" href="#timetable">Open Section</a>
+      </article>
+
+      <article class="card" id="resources">
+        <div class="icon">📚</div>
+        <h3>Study Materials</h3>
+        <p>Find lecture notes, programming resources, and past questions.</p>
+        <a class="button" href="#resources">View Resources</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">💬</div>
+        <h3>Student Feedback</h3>
+        <p>Share suggestions and questions with class representatives.</p>
+        <a class="button" href="#feedback">Open Section</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">👥</div>
+        <h3>Student Community</h3>
+        <p>Stay informed about your level and departmental activities.</p>
+        <a class="button" href="#community">Learn More</a>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="attendance">
+    <h2 class="section-title">✅ Attendance Information</h2>
+    <div class="announcement">
+      <h3>Student Attendance</h3>
+      <p>
+        Attendance registration will be enabled after student accounts
+        and the secure attendance system have been connected.
+      </p>
+    </div>
+  </section>
+
+  <section id="payments">
+    <h2 class="section-title">💰 Class Dues & Payments</h2>
+    <div class="announcement">
+      <h3>Payment Information</h3>
+      <p>
+        Students will be able to submit payment references.
+        The class representative will verify submitted payments.
+        No payment is processed by this demonstration page.
+      </p>
+    </div>
+  </section>
+
+  <section id="timetable">
+    <h2 class="section-title">🗓️ Class Timetable</h2>
+    <div class="announcement">
+      <h3>Lecture Schedule</h3>
+      <p>
+        The official lecture timetable will be published here
+        when it becomes available.
+      </p>
+    </div>
+  </section>
+
+  <section id="feedback">
+    <h2 class="section-title">💬 Student Feedback</h2>
+    <div class="announcement">
+      <h3>Suggestions and Complaints</h3>
+      <p>
+        A secure feedback form will be added in a future version.
+        This page does not currently send messages.
+      </p>
+    </div>
+  </section>
+
+  <section id="community">
+    <h2 class="section-title">👥 Our Community</h2>
+    <div class="announcement">
+      <h3>Computer Engineering Students</h3>
+      <p>
+        A shared student community for academic collaboration,
+        departmental updates, and student activities.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>CompEng Hub</strong></p>
+  <p>Computer Engineering Department</p>
+  <p>Federal University of Technology and Environmental Science, Iyin-Ekiti</p>
+  <p>Student Portal · First Development Version</p>
+</footer>
+
+</body>
+                        </html>
