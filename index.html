@@ -597,6 +597,15 @@
       document.getElementById("dashboardHome").classList.remove("hidden");
     }
   </script>
+  <script>
+  const SUPABASE_URL = "https://fodhspgshdacyhudopjf.supabase.co/rest/v1/";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_knA_d11jFxYls6QIBdbopQ_JKr3NeAm";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </body>
           </html>
