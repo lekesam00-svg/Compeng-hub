@@ -341,5 +341,45 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_KEY
 );
 </script>
+  <section id="student-access" style="background:#111;color:white;padding:25px;max-width:420px;margin:30px auto;border:1px solid #d4af37;border-radius:12px;font-family:Arial,sans-serif;">
+  <h2 style="color:#d4af37;text-align:center;">CompEng Hub</h2>
+  <p style="text-align:center;">Student Portal</p>
+
+  <div id="register-form">
+    <h3>Student Registration</h3>
+
+    <label>Full Name</label>
+    <input id="fullName" type="text" placeholder="Enter your full name" style="width:95%;padding:10px;margin:8px 0;">
+
+    <label>Matric Number</label>
+    <input id="regMatric" type="text" placeholder="Enter your matric number" style="width:95%;padding:10px;margin:8px 0;">
+
+    <label>Password</label>
+    <input id="regPassword" type="password" placeholder="Create a password" style="width:95%;padding:10px;margin:8px 0;">
+
+    <label>Confirm Password</label>
+    <input id="confirmPassword" type="password" placeholder="Confirm your password" style="width:95%;padding:10px;margin:8px 0;">
+
+    <button type="button" onclick="alert('Registration will be connected to Supabase in the next step.')" style="width:100%;padding:12px;background:#d4af37;border:0;border-radius:5px;font-weight:bold;margin-top:10px;">Register</button>
+  </div>
+
+  <hr style="border-color:#555;margin:25px 0;">
+
+  <div id="login-form">
+    <h3>Student Login</h3>
+
+    <label>Matric Number</label>
+    <input id="loginMatric" type="text" placeholder="Enter your matric number" style="width:95%;padding:10px;margin:8px 0;">
+
+    <label>Password</label>
+    <input id="loginPassword" type="password" placeholder="Enter your password" style="width:95%;padding:10px;margin:8px 0;">
+
+    <button type="button" onclick="alert('Login will be connected to Supabase in the next step.')" style="width:100%;padding:12px;background:#d4af37;border:0;border-radius:5px;font-weight:bold;margin-top:10px;">Login</button>
+  </div>
+
+  <p style="font-size:12px;color:#bbb;text-align:center;margin-top:20px;">
+    Federal University of Technology and Environmental Science, Iyin-Ekiti
+  </p>
+  </section>
 </body>
                         </html>
