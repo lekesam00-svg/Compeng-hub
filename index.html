@@ -1,386 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101d35">
-<title>CompEng Hub | Student Portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101010">
+  <title>CompEng Hub | Student Portal</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <style>
+    :root {
+      --gold: #d4af37;
+      --black: #101010;
+      --panel: #1b1b1b;
+      --text: #f5f5f5;
+      --muted: #b7b7b7;
+    }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f3f6fb;
-  color: #17233b;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-header {
-  background: #101d35;
-  color: white;
-  padding: 24px 18px;
-}
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+    }
 
-header h1 {
-  font-size: 25px;
-  margin-bottom: 8px;
-}
+    button, input, textarea {
+      font: inherit;
+    }
 
-header p {
-  color: #cbd5e1;
-  font-size: 13px;
-  line-height: 1.6;
-}
+    button {
+      cursor: pointer;
+    }
 
-nav {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  padding: 15px;
-  background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-}
+    .brand {
+      color: var(--gold);
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
 
-nav a {
-  color: #1d4ed8;
-  text-decoration: none;
-  font-size: 14px;
-  white-space: nowrap;
-  font-weight: bold;
-}
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
-.container {
-  max-width: 950px;
-  margin: auto;
-  padding: 20px 15px;
-}
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background:
+        radial-gradient(ellipse at top, #342a0e 0%, #101010 55%);
+    }
 
-.welcome {
-  background: #ffffff;
-  padding: 22px;
-  border-radius: 15px;
-  margin-bottom: 22px;
-  border: 1px solid #e2e8f0;
-}
+    .auth-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--panel);
+      border: 1px solid #6f5b20;
+      border-radius: 16px;
+      padding: 28px 22px;
+      box-shadow: 0 12px 40px #0008;
+    }
 
-.welcome h2 {
-  margin-bottom: 10px;
-}
+    .auth-card h1 {
+      margin-top: 0;
+      font-size: 25px;
+    }
 
-.welcome p {
-  color: #64748b;
-  line-height: 1.7;
-}
+    .auth-card label, .form label {
+      display: block;
+      margin: 14px 0 7px;
+      color: #eee;
+      font-size: 14px;
+    }
 
-.section-title {
-  margin: 25px 0 15px;
-  font-size: 20px;
-}
+    input, textarea {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #101010;
+      color: white;
+      outline: none;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
+    input:focus, textarea:focus {
+      border-color: var(--gold);
+    }
 
-.card {
-  background: white;
-  padding: 17px;
-  border-radius: 13px;
-  border: 1px solid #e2e8f0;
-}
+    .primary, .secondary, .tab {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
 
-.card .icon {
-  font-size: 28px;
-  margin-bottom: 12px;
-}
+    .primary {
+      width: 100%;
+      border: none;
+      background: var(--gold);
+      color: #151515;
+      margin-top: 18px;
+    }
 
-.card h3 {
-  font-size: 16px;
-  margin-bottom: 8px;
-}
+    .secondary {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+    }
 
-.card p {
-  color: #64748b;
-  font-size: 13px;
-  line-height: 1.6;
-}
+    .switch {
+      text-align: center;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-.button {
-  display: inline-block;
-  background: #1d4ed8;
-  color: white;
-  padding: 11px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 13px;
-}
+    .switch button {
+      border: none;
+      background: none;
+      color: var(--gold);
+      font-weight: bold;
+    }
 
-.announcement {
-  background: white;
-  border-left: 4px solid #2563eb;
-  border-radius: 10px;
-  padding: 17px;
-  margin-bottom: 12px;
-}
+    .message {
+      margin-top: 12px;
+      color: var(--gold);
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
-.announcement p {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #64748b;
-  line-height: 1.6;
-}
+    .hidden {
+      display: none !important;
+    }
 
-.badge {
-  display: inline-block;
-  background: #dbeafe;
-  color: #1d4ed8;
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 11px;
-  margin-bottom: 10px;
-}
+    header {
+      background: #181818;
+      border-bottom: 1px solid #51451e;
+      padding: 18px;
+    }
 
-footer {
-  text-align: center;
-  padding: 25px 15px;
-  background: #101d35;
-  color: #cbd5e1;
-  font-size: 12px;
-  line-height: 1.8;
-  margin-top: 35px;
-}
+    .header-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-@media (min-width: 650px) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-</style>
+    .header-inner .brand {
+      margin: 0;
+    }
+
+    .header-inner small {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px 16px 50px;
+    }
+
+    .welcome {
+      padding: 24px 0;
+    }
+
+    .welcome h1 {
+      margin-bottom: 8px;
+      font-size: 29px;
+    }
+
+    .welcome p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .menu-card {
+      text-align: left;
+      background: var(--panel);
+      color: white;
+      border: 1px solid #383838;
+      border-radius: 12px;
+      padding: 20px 16px;
+      min-height: 145px;
+    }
+
+    .menu-card:hover {
+      border-color: var(--gold);
+    }
+
+    .icon {
+      display: block;
+      font-size: 29px;
+      margin-bottom: 15px;
+    }
+
+    .menu-card strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .menu-card small {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .feature {
+      max-width: 760px;
+      margin: 12px auto;
+    }
+
+    .feature h1 {
+      color: var(--gold);
+    }
+
+    .feature-panel {
+      background: var(--panel);
+      border: 1px solid #393939;
+      border-radius: 12px;
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .feature-panel p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .feature-panel .primary {
+      max-width: 300px;
+    }
+
+    .back-button {
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid #6f5b20;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+
+    footer {
+      color: #888;
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 480px) {
+      .auth-card {
+        padding: 24px 18px;
+      }
+
+      .welcome h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <h1>💻 CompEng Hub</h1>
-  <p>Federal University of Technology and Environmental Science, Iyin-Ekiti</p>
-  <p>Computer Engineering Department Student Portal</p>
-</header>
-
-<nav>
-  <a href="#home">Home</a>
-  <a href="#news">Department News</a>
-  <a href="#services">Student Services</a>
-  <a href="#resources">Study Materials</a>
-</nav>
-
-<main class="container" id="home">
-
-  <section class="welcome">
-    <span class="badge">STUDENT COMMUNITY</span>
-    <h2>Welcome to CompEng Hub 👋</h2>
-    <p>
-      Your central platform for departmental announcements,
-      class information, attendance, payments, academic resources,
-      and student activities.
-    </p>
-  </section>
-
-  <section id="news">
-    <h2 class="section-title">📢 Department News</h2>
-
-    <article class="announcement">
-      <span class="badge">WELCOME</span>
-      <h3>Welcome to CompEng Hub</h3>
-      <p>
-        Stay connected with your Computer Engineering Department.
-        Important announcements will appear here when published
-        by authorized department administrators.
+  <!-- Registration and login page -->
+  <section id="authPage" class="auth-page">
+    <div class="auth-card">
+      <div class="brand">CompEng Hub</div>
+      <p class="subtitle">
+        Computer Engineering Department<br>
+        Federal University of Technology and Environmental Science,
+        Iyin-Ekiti
       </p>
-    </article>
 
-    <article class="announcement">
-      <span class="badge">STUDENT INFORMATION</span>
-      <h3>Check Your Academic Updates</h3>
-      <p>
-        Visit the portal regularly for class schedules,
-        examination information, and departmental notices.
-      </p>
-    </article>
-  </section>
+      <div id="registerForm">
+        <h1>Create Student Account</h1>
 
-  <section id="services">
-    <h2 class="section-title">🎓 Student Services</h2>
+        <label for="fullName">Full Name</label>
+        <input id="fullName" autocomplete="name"
+          placeholder="Enter your full name">
 
-    <div class="grid">
+        <label for="regMatric">Matric Number</label>
+        <input id="regMatric" autocomplete="username"
+          placeholder="Enter your matric number">
 
-      <article class="card">
-        <div class="icon">✅</div>
-        <h3>Class Attendance</h3>
-        <p>Access lecture and practical attendance information.</p>
-        <a class="button" href="#attendance">Open Section</a>
-      </article>
+        <label for="regPassword">Password</label>
+        <input id="regPassword" type="password"
+          autocomplete="new-password" placeholder="Create a password">
 
-      <article class="card">
-        <div class="icon">💰</div>
-        <h3>Class Payments</h3>
-        <p>View class dues and payment submission instructions.</p>
-        <a class="button" href="#payments">Open Section</a>
-      </article>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password"
+          autocomplete="new-password" placeholder="Confirm your password">
 
-      <article class="card">
-        <div class="icon">🗓️</div>
-        <h3>Class Timetable</h3>
-        <p>Keep track of lecture times, venues, and deadlines.</p>
-        <a class="button" href="#timetable">Open Section</a>
-      </article>
+        <button class="primary" type="button"
+          onclick="registerStudent()">Create Account</button>
 
-      <article class="card" id="resources">
-        <div class="icon">📚</div>
-        <h3>Study Materials</h3>
-        <p>Find lecture notes, programming resources, and past questions.</p>
-        <a class="button" href="#resources">View Resources</a>
-      </article>
+        <div class="switch">
+          Already registered?
+          <button type="button" onclick="showLogin()">Log in</button>
+        </div>
+      </div>
 
-      <article class="card">
-        <div class="icon">💬</div>
-        <h3>Student Feedback</h3>
-        <p>Share suggestions and questions with class representatives.</p>
-        <a class="button" href="#feedback">Open Section</a>
-      </article>
+      <div id="loginForm" class="hidden">
+        <h1>Student Login</h1>
 
-      <article class="card">
-        <div class="icon">👥</div>
-        <h3>Student Community</h3>
-        <p>Stay informed about your level and departmental activities.</p>
-        <a class="button" href="#community">Learn More</a>
-      </article>
+        <label for="loginMatric">Matric Number</label>
+        <input id="loginMatric" autocomplete="username"
+          placeholder="Enter your matric number">
 
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password"
+          autocomplete="current-password" placeholder="Enter your password">
+
+        <button class="primary" type="button"
+          onclick="loginStudent()">Log In</button>
+
+        <div class="switch">
+          New student?
+          <button type="button" onclick="showRegister()">Register</button>
+        </div>
+      </div>
+
+      <div id="authMessage" class="message" role="status"></div>
     </div>
   </section>
 
-  <section id="attendance">
-    <h2 class="section-title">✅ Attendance Information</h2>
-    <div class="announcement">
-      <h3>Student Attendance</h3>
-      <p>
-        Attendance registration will be enabled after student accounts
-        and the secure attendance system have been connected.
-      </p>
-    </div>
+  <!-- Student dashboard: hidden until login is implemented -->
+  <section id="dashboardPage" class="hidden">
+    <header>
+      <div class="header-inner">
+        <div>
+          <div class="brand">CompEng Hub</div>
+          <small>Computer Engineering Student Portal</small>
+        </div>
+        <button class="secondary" type="button" onclick="logoutStudent()">
+          Log Out
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div id="dashboardHome">
+        <div class="welcome">
+          <h1>Welcome, <span id="studentName">Student</span>!</h1>
+          <p>Your department, your resources, all in one place.</p>
+        </div>
+
+        <div class="menu-grid">
+          <button class="menu-card" onclick="openFeature('news')">
+            <span class="icon">📰</span>
+            <strong>Department News</strong>
+            <small>Announcements and updates</small>
+          </button>
+
+          <button class="menu-card" onclick="openFeature('timetable')">
+            <span class="icon">📅</span>
+            <strong>Class Timetable</strong>
+            <small>Lectures and class schedules</small>
+          </button>
+
+          <button class="menu-card" onclick="openFeature('attendance')">
+            <span class="icon">✅</span>
+            <strong>Attendance</strong>
+            <small>Submit a lecturer's code</small>
+          </button>
+
+          <button class="menu-card" onclick="openFeature('materials')">
+            <span class="icon">📚</span>
+            <strong>Course Materials</strong>
+            <small>Notes and learning resources</small>
+          </button>
+
+          <button class="menu-card" onclick="openFeature('deferment')">
+            <span class="icon">💰</span>
+            <strong>Deferment Fee</strong>
+            <small>Contact the class representative</small>
+          </button>
+
+          <button class="menu-card" onclick="openFeature('profile')">
+            <span class="icon">👤</span>
+            <strong>My Profile</strong>
+            <small>Your student information</small>
+          </button>
+        </div>
+      </div>
+
+      <section id="featurePage" class="feature hidden">
+        <button class="back-button" onclick="showDashboardHome()">
+          ← Back to Dashboard
+        </button>
+        <h1 id="featureTitle">Feature</h1>
+        <div id="featureContent" class="feature-panel"></div>
+      </section>
+    </main>
+
+    <footer>
+      CompEng Hub · Computer Engineering Department<br>
+      Federal University of Technology and Environmental Science, Iyin-Ekiti
+    </footer>
   </section>
 
-  <section id="payments">
-    <h2 class="section-title">💰 Class Dues & Payments</h2>
-    <div class="announcement">
-      <h3>Payment Information</h3>
-      <p>
-        Students will be able to submit payment references.
-        The class representative will verify submitted payments.
-        No payment is processed by this demonstration page.
-      </p>
-    </div>
-  </section>
+  <script>
+    /*
+      IMPORTANT:
+      This is a design prototype, not a working authentication system.
+      The registration and login functions below intentionally do not
+      create accounts or grant access. We will connect Supabase next.
+    */
 
-  <section id="timetable">
-    <h2 class="section-title">🗓️ Class Timetable</h2>
-    <div class="announcement">
-      <h3>Lecture Schedule</h3>
-      <p>
-        The official lecture timetable will be published here
-        when it becomes available.
-      </p>
-    </div>
-  </section>
+    function showMessage(message) {
+      document.getElementById("authMessage").textContent = message;
+    }
 
-  <section id="feedback">
-    <h2 class="section-title">💬 Student Feedback</h2>
-    <div class="announcement">
-      <h3>Suggestions and Complaints</h3>
-      <p>
-        A secure feedback form will be added in a future version.
-        This page does not currently send messages.
-      </p>
-    </div>
-  </section>
+    function showLogin() {
+      document.getElementById("registerForm").classList.add("hidden");
+      document.getElementById("loginForm").classList.remove("hidden");
+      showMessage("");
+    }
 
-  <section id="community">
-    <h2 class="section-title">👥 Our Community</h2>
-    <div class="announcement">
-      <h3>Computer Engineering Students</h3>
-      <p>
-        A shared student community for academic collaboration,
-        departmental updates, and student activities.
-      </p>
-    </div>
-  </section>
+    function showRegister() {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("registerForm").classList.remove("hidden");
+      showMessage("");
+    }
 
-</main>
+    function registerStudent() {
+      const name = document.getElementById("fullName").value.trim();
+      const matric = document.getElementById("regMatric").value.trim();
+      const password = document.getElementById("regPassword").value;
+      const confirm = document.getElementById("confirmPassword").value;
 
-<footer>
-  <p><strong>CompEng Hub</strong></p>
-  <p>Computer Engineering Department</p>
-  <p>Federal University of Technology and Environmental Science, Iyin-Ekiti</p>
-  <p>Student Portal · First Development Version</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      if (!name || !matric || !password || !confirm) {
+        showMessage("Please fill in every field.");
+        return;
+      }
 
-<script>
-const SUPABASE_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
-const SUPABASE_KEY = "sb_publishable_knA_d11jFxYls6QIBdbopQ_JKr3NeAm";
+      if (password.length < 8) {
+        showMessage("Your password must contain at least 8 characters.");
+        return;
+      }
 
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-):
-    <section id="student-access" style="background:#111;color:white;padding:25px;max-width:420px;margin:30px auto;border:1px solid #d4af37;border-radius:12px;font-family:Arial,sans-serif;">
-  <h2 style="color:#d4af37;text-align:center;">CompEng Hub</h2>
-  <p style="text-align:center;">Student Portal</p>
+      if (password !== confirm) {
+        showMessage("Your passwords do not match.");
+        return;
+      }
 
-  <div id="register-form">
-    <h3>Student Registration</h3>
+      showMessage(
+        "Your details are valid. Account creation will work after we connect Supabase."
+      );
+    }
 
-    <label>Full Name</label>
-    <input id="fullName" type="text" placeholder="Enter your full name" style="width:95%;padding:10px;margin:8px 0;">
+    function loginStudent() {
+      const matric = document.getElementById("loginMatric").value.trim();
+      const password = document.getElementById("loginPassword").value;
 
-    <label>Matric Number</label>
-    <input id="regMatric" type="text" placeholder="Enter your matric number" style="width:95%;padding:10px;margin:8px 0;">
+      if (!matric || !password) {
+        showMessage("Enter your matric number and password.");
+        return;
+      }
 
-    <label>Password</label>
-    <input id="regPassword" type="password" placeholder="Create a password" style="width:95%;padding:10px;margin:8px 0;">
+      showMessage(
+        "Login will be enabled after we securely connect Supabase."
+      );
+    }
 
-    <label>Confirm Password</label>
-    <input id="confirmPassword" type="password" placeholder="Confirm your password" style="width:95%;padding:10px;margin:8px 0;">
+    function logoutStudent() {
+      document.getElementById("dashboardPage").classList.add("hidden");
+      document.getElementById("authPage").classList.remove("hidden");
+      showRegister();
+      showMessage("You have returned to the student access page.");
+    }
 
-    <button type="button" onclick="alert('Registration will be connected to Supabase in the next step.')" style="width:100%;padding:12px;background:#d4af37;border:0;border-radius:5px;font-weight:bold;margin-top:10px;">Register</button>
-  </div>
+    const featureDetails = {
+      news: {
+        title: "Department News",
+        text: "Department announcements will appear here when the news system is connected."
+      },
+      timetable: {
+        title: "Class Timetable",
+        text: "Your department timetable will appear here when the timetable is added."
+      },
+      attendance: {
+        title: "Attendance",
+        text: "Enter the attendance code provided by your lecturer once the attendance system is connected.",
+        form: "attendance"
+      },
+      materials: {
+        title: "Course Materials",
+        text: "Course notes, PDFs and learning resources will be listed here."
+      },
+      deferment: {
+        title: "Deferment Fee Request",
+        text: "Send a request to your class representative using the form below.",
+        form: "deferment"
+      },
+      profile: {
+        title: "My Profile",
+        text: "Your verified student profile will appear here after authentication is connected."
+      }
+    };
 
-  <hr style="border-color:#555;margin:25px 0;">
+    function openFeature(name) {
+      const feature = featureDetails[name];
+      if (!feature) return;
 
-  <div id="login-form">
-    <h3>Student Login</h3>
+      document.getElementById("dashboardHome").classList.add("hidden");
+      document.getElementById("featurePage").classList.remove("hidden");
+      document.getElementById("featureTitle").textContent = feature.title;
 
-    <label>Matric Number</label>
-    <input id="loginMatric" type="text" placeholder="Enter your matric number" style="width:95%;padding:10px;margin:8px 0;">
+      const content = document.getElementById("featureContent");
+      content.replaceChildren();
 
-    <label>Password</label>
-    <input id="loginPassword" type="password" placeholder="Enter your password" style="width:95%;padding:10px;margin:8px 0;">
+      const description = document.createElement("p");
+      description.textContent = feature.text;
+      content.appendChild(description);
 
-    <button type="button" onclick="alert('Login will be connected to Supabase in the next step.')" style="width:100%;padding:12px;background:#d4af37;border:0;border-radius:5px;font-weight:bold;margin-top:10px;">Login</button>
-  </div>
+      if (feature.form === "attendance") {
+        const label = document.createElement("label");
+        label.textContent = "Attendance Code";
+        label.htmlFor = "attendanceCode";
 
-  <p style="font-size:12px;color:#bbb;text-align:center;margin-top:20px;">
-    Federal University of Technology and Environmental Science, Iyin-Ekiti
-  </p>
-  </section>
-</script>
+        const input = document.createElement("input");
+        input.id = "attendanceCode";
+        input.placeholder = "Enter code from your lecturer";
 
+        const button = document.createElement("button");
+        button.className = "primary";
+        button.textContent = "Submit Attendance";
+        button.onclick = function () {
+          alert("Attendance submission will work after the secure database is connected.");
+        };
+
+        content.append(label, input, button);
+      }
+
+      if (feature.form === "deferment") {
+        const form = document.createElement("form");
+        form.className = "form";
+
+        const fields = [
+          ["defermentName", "Full Name", "text"],
+          ["defermentMatric", "Matric Number", "text"],
+          ["defermentMessage", "Message to Class Representative", "textarea"]
+        ];
+
+        fields.forEach(function (field) {
+          const label = document.createElement("label");
+          label.htmlFor = field[0];
+          label.textContent = field[1];
+
+          let input;
+          if (field[2] === "textarea") {
+            input = document.createElement("textarea");
+            input.rows = 4;
+          } else {
+            input = document.createElement("input");
+            input.type = field[2];
+          }
+
+          input.id = field[0];
+          input.required = true;
+          form.append(label, input);
+        });
+
+        const button = document.createElement("button");
+        button.type = "submit";
+        button.className = "primary";
+        button.textContent = "Send to Class Representative";
+
+        form.appendChild(button);
+        form.onsubmit = function (event) {
+          event.preventDefault();
+          alert("Your request has not been sent. We will connect this form to the class representative next.");
+        };
+
+        content.appendChild(form);
+      }
+    }
+
+    function showDashboardHome() {
+      document.getElementById("featurePage").classList.add("hidden");
+      document.getElementById("dashboardHome").classList.remove("hidden");
+    }
+  </script>
 </body>
-                        </html>
+          </html>
