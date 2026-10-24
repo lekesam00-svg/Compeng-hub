@@ -464,20 +464,9 @@
   );
       }
 
-      if (password.length < 8) {
-        showMessage("Your password must contain at least 8 characters.");
-        return;
-      }
+  
 
-      if (password !== confirm) {
-        showMessage("Your passwords do not match.");
-        return;
-      }
-
-      showMessage(
-        "Your details are valid. Account creation will work after we connect Supabase."
-      );
-    }
+    
 
     function loginStudent() {
       const matric = document.getElementById("loginMatric").value.trim();
