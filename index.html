@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+8<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -439,14 +439,30 @@
     }
 
     function registerStudent() {
-      const name = document.getElementById("fullName").value.trim();
-      const matric = document.getElementById("regMatric").value.trim();
-      const password = document.getElementById("regPassword").value;
-      const confirm = document.getElementById("confirmPassword").value;
+    async function registerStudent() {
+  const name = document.getElementById("fullName").value.trim();
+  const matric = document.getElementById("regMatric").value.trim();
+  const password = document.getElementById("regPassword").value;
+  const confirm = document.getElementById("confirmPassword").value;
 
-      if (!name || !matric || !password || !confirm) {
-        showMessage("Please fill in every field.");
-        return;
+  if (!name || !matric || !password || !confirm) {
+    showMessage("Please fill in every field.");
+    return;
+  }
+
+  if (password.length < 8) {
+    showMessage("Your password must contain at least 8 characters.");
+    return;
+  }
+
+  if (password !== confirm) {
+    showMessage("Your passwords do not match.");
+    return;
+  }
+
+  showMessage(
+    "Your details are valid. Next, we need to connect account creation securely."
+  );
       }
 
       if (password.length < 8) {
