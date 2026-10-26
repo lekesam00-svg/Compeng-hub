@@ -1,4 +1,4 @@
-8<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -440,31 +440,56 @@
       showMessage("");
     }
 
-    async function registerStudent() {
-  const name = document.getElementById("fullName").value.trim();
-  const matric = document.getElementById("regMatric").value.trim();
-  const password = document.getElementById("regPassword").value;
-  const confirm = document.getElementById("confirmPassword").value;
+  async function registerStudent() {
+const fullName = document.getElementById("fullName").value.trim();
+const email = document.getElementById("regEmail").value.trim();
+const matric = document.getElementById("regMatric").value.trim();
+const password = document.getElementById("regPassword").value;
+const confirmPassword = document.getElementById("confirmPassword").value;
 
-  if (!name || !matric || !password || !confirm) {
-    showMessage("Please fill in every field.");
-    return;
-  }
+if (!fullName || !email || !matric || !password || !confirmPassword) {
+alert("Please fill in all fields.");
+return;
+}
 
-  if (password.length < 8) {
-    showMessage("Your password must contain at least 8 characters.");
-    return;
-  }
+if (password !== confirmPassword) {
+alert("Your passwords do not match.");
+return;
+}
 
-  if (password !== confirm) {
-    showMessage("Your passwords do not match.");
-    return;
-  }
+if (password.length < 6) {
+alert("Your password must contain at least 6 characters.");
+return;
+}
 
-  showMessage(
-    "Your details are valid. Next, we need to connect account creation securely."
-  );
-      }
+const button = document.activeElement;
+
+try {
+const { data, error } = await supabaseClient.auth.signUp({
+email: email,
+password: password,
+options: {
+data: {
+full_name: fullName,
+matric_number: matric
+}
+}
+});
+
+if (error) {
+  alert("Registration failed: " + error.message);
+  return;
+}
+
+alert(
+  "Account created successfully! Please check your email for a confirmation link before logging in."
+);
+
+} catch (error) {
+alert("Something went wrong. Please try again.");
+console.error(error);
+}
+                                         
 
   
 
